@@ -48,7 +48,9 @@ async def scrapper():#nouvelle recherche
     if not researches[0].searching_items:
         researches[0].searching_items == True
         print("new research!")
+
         for research in researches:
+            research.driver.naviguate.refresh()
             new_items = research.get_new_items()
 
             #channel de notification
@@ -63,7 +65,7 @@ async def scrapper():#nouvelle recherche
                     embed.description = f'price: {new_item["price"]}\nsize: {new_item["size"]}'
                     embed.url = new_item['link']
                     await channel.send(embed=embed)
-        researches[0].searching_items
+        researches[0].searching_items == False
 
 
 client.run("ODE5NzA3OTY4MTkwNDE0ODU4.YEqiiQ.c7UjyL50r6LQBzygX3y-CDDQ_Zw")
